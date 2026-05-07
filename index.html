@@ -1,574 +1,695 @@
 <!doctype html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="Workshop on Foundation Models for Bioinformatics and Biomedicine">
-  <meta name="author" content="">
-  <title>The 2nd International Workshop on Foundation Models for Bioinformatics and Biomedicine</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom Google Web Font -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The 3rd International Workshop on Foundation Models for Bioinformatics and Biomedicine (FMBB 2026) at IEEE BIBM 2026, Dallas, TX, USA">
+  <title>FMBB 2026 — The 3rd International Workshop on Foundation Models for Bioinformatics and Biomedicine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Arvo:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-
-  <!-- Custom CSS-->
-  <link href="css/general.css" rel="stylesheet">
-
-  <!-- Owl-Carousel -->
-  <link href="css/custom.css" rel="stylesheet">
-  <link href="css/owl.carousel.css" rel="stylesheet">
-  <link href="css/owl.theme.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/animate.css" rel="stylesheet">
-
-  <!-- Magnific Popup core CSS file -->
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <script src="js/modernizr-2.8.3.min.js"></script> <!-- Modernizr /-->
-
   <style>
-    /* Enhanced styling */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #4F46E5;
+      --primary-light: #818CF8;
+      --primary-dark: #3730A3;
+      --accent: #06B6D4;
+      --accent2: #8B5CF6;
+      --bg: #0F172A;
+      --bg-card: rgba(30, 41, 59, 0.6);
+      --bg-section-alt: #020617;
+      --text: #E2E8F0;
+      --text-muted: #94A3B8;
+      --border: rgba(99, 102, 241, 0.2);
+      --glow: rgba(99, 102, 241, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-weight: 300;
-      color: #333;
-      background-color: #fff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-    
-    .intro-header {
-      background-image: linear-gradient(rgba(59, 89, 152, 0.8), rgba(59, 89, 152, 0.9)), url("img/bg-banner.jpg");
-      background-position: center;
-      background-size: cover;
-      padding-top: 30px;
-      padding-bottom: 30px;
-      max-height: 200px;
-      position: relative;
-    }
-    
-    .abcen1 {
-      position: relative;
-      top: -15px;
-    }
-    
-    .h1_home {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .h3_home {
-      font-weight: 300;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    
-    .section-heading {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      color: #3a5199;
-      margin-bottom: 25px;
-      position: relative;
-      padding-bottom: 15px;
-    }
-    
-    .section-heading:after {
+
+    /* Animated background */
+    body::before {
       content: '';
-      display: block;
-      width: 80px;
-      height: 3px;
-      background-color: #5c85d6;
-      position: absolute;
-      bottom: 0;
-      left: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 800px 600px at 20% 20%, rgba(99,102,241,0.08), transparent),
+        radial-gradient(ellipse 600px 400px at 80% 80%, rgba(6,182,212,0.06), transparent),
+        radial-gradient(ellipse 500px 500px at 50% 50%, rgba(139,92,246,0.04), transparent);
+      pointer-events: none;
+      z-index: 0;
     }
-    
-    .content-section-a, .content-section-b {
-      padding: 80px 0;
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      backdrop-filter: blur(20px);
+      background: rgba(15, 23, 42, 0.85);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
     }
-    
-    .content-section-a {
-      background-color: #ffffff;
-    }
-    
-    .content-section-b {
-      background-color: #f8f9fa;
-    }
-    
-    .lead {
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-    
-    .navbar-default {
-      background-color: #fff;
-      border-color: transparent;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    .navbar-default .navbar-brand {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      color: #3a5199;
-    }
-    
-    .navbar-default .navbar-nav > li > a {
-      color: #555;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-    
-    table {
-      border-collapse: collapse;
-      line-height: 2;
-      width: 100%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 40px;
-    }
-    
-    th, td {
-      padding: 15px;
-      text-align: left;
-      border-bottom: 1px solid #e9ecef;
-    }
-    
-    th {
-      background-color: #3a5199;
-      color: white;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-    
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-    
-    tr:hover {
-      background-color: #e9ecef;
-    }
-    
-    ul {
-      padding-left: 0;
-      margin-left: 0;
-      list-style-type: none;
-    }
-    
-    li {
-      padding: 10px 0;
-      position: relative;
-      padding-left: 25px;
-      font-size: 16px;
-    }
-    
-    li:before {
-      content: "•";
-      color: #3a5199;
-      font-size: 20px;
-      position: absolute;
-      left: 0;
-      top: 7px;
-    }
-    
-    .organizer-card {
-      padding: 30px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 30px;
-    }
-    
-    .organizer-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    
-    .img-circle {
-      border: 4px solid #f8f9fa;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      transition: transform 0.5s ease;
-    }
-    
-    .img-circle:hover {
-      transform: scale(1.05);
-    }
-    
-    footer {
-      background-color: #3a5199;
-      color: white;
-      padding: 25px 0;
-    }
-    
-    footer h5 {
-      font-weight: 300;
-      letter-spacing: 1px;
-    }
-    
-    .schedule {
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    
-    .button_down a {
-      background-color: rgba(255,255,255,0.2);
-      border: 2px solid #fff;
-    }
-    
-    .timeline {
-      position: relative;
+
+    .nav-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px 0;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    
-    .timeline-item {
-      padding: 10px 40px;
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary-light);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s;
       position: relative;
-      background-color: inherit;
-      width: 50%;
-      left: 0;
     }
-    
-    .timeline-item::after {
+
+    .nav-links a:hover { color: var(--primary-light); }
+
+    .nav-links a::after {
       content: '';
       position: absolute;
-      width: 20px;
-      height: 20px;
-      right: -10px;
-      background-color: white;
-      border: 4px solid #3a5199;
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s;
     }
-    
-    .timeline-content {
-      padding: 20px;
-      background-color: white;
+
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Hero */
+    .hero {
       position: relative;
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 80px;
+      overflow: hidden;
     }
-    
-    .keynote-speaker {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      padding: 30px;
-      margin-bottom: 30px;
-      transition: transform 0.3s ease;
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        linear-gradient(135deg, rgba(79,70,229,0.15) 0%, transparent 50%),
+        linear-gradient(225deg, rgba(6,182,212,0.1) 0%, transparent 50%);
+      z-index: 0;
     }
-    
-    .keynote-speaker:hover {
-      transform: translateY(-5px);
+
+    /* Grid pattern overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 0;
     }
-    
-    .personal-website {
-      margin-top: 10px;
-      display: inline-block;
-      color: #3a5199;
-      text-decoration: none;
+
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--primary-light);
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff 0%, var(--primary-light) 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
       font-weight: 400;
-      border-bottom: 1px dashed #3a5199;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .hero-meta-item i {
+      color: var(--primary-light);
+      font-size: 16px;
+    }
+
+    /* Sections */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 24px;
+    }
+
+    .section-alt { background: var(--bg-section-alt); }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
-    
-    .personal-website:hover {
-      color: #5c85d6;
-      border-bottom: 1px solid #5c85d6;
-      text-decoration: none;
-    }
-    
-    .submission-link {
-      display: inline-block;
-      background-color: #3a5199;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 500;
-      margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(58, 81, 153, 0.3);
-      transition: all 0.3s ease;
-    }
-    
-    .submission-link:hover {
-      background-color: #5c85d6;
+
+    .card:hover {
+      border-color: rgba(99,102,241,0.4);
+      box-shadow: 0 8px 32px rgba(99,102,241,0.1);
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(58, 81, 153, 0.4);
+    }
+
+    /* About text */
+    .about-text p {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .about-text a {
+      color: var(--primary-light);
       text-decoration: none;
-      color: white;
+      border-bottom: 1px dashed var(--primary-light);
+      transition: all 0.3s;
     }
-    
-    .submission-link i {
-      margin-right: 8px;
+
+    .about-text a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
     }
-    
-    .previous-workshop {
-      display: inline-block;
-      color: #3a5199;
+
+    /* Topics grid */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .topic-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .topic-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(6,182,212,0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--primary-light);
+    }
+
+    .topic-card h4 {
+      font-size: 15px;
       font-weight: 500;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Timeline / Dates */
+    .dates-list { display: flex; flex-direction: column; gap: 0; }
+
+    .date-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .date-item:hover { background: rgba(99,102,241,0.03); padding-left: 8px; }
+    .date-item:last-child { border-bottom: none; }
+
+    .date-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .date-label {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--primary), var(--accent2));
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
       text-decoration: none;
-      border-bottom: 1px solid #3a5199;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(79,70,229,0.3);
+      margin-top: 32px;
     }
-    
-    .previous-workshop:hover {
-      color: #5c85d6;
-      border-bottom: 1px solid #5c85d6;
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(79,70,229,0.4);
+      color: #fff;
+      text-decoration: none;
     }
-    
-    .previous-workshop i {
-      margin-right: 5px;
+
+    /* Organizers */
+    .organizers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .organizer-card {
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .organizer-img {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      margin-bottom: 20px;
+      transition: all 0.4s ease;
+    }
+
+    .organizer-img:hover {
+      border-color: var(--primary-light);
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(99,102,241,0.2);
+    }
+
+    .organizer-card h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .organizer-card h4 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .organizer-card h4 a:hover { color: var(--primary-light); }
+
+    .organizer-card .affiliation {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .organizer-card .email a {
+      font-size: 13px;
+      color: var(--primary-light);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* PC Members */
+    .pc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .pc-member {
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 15px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+
+    .pc-member:hover {
+      border-color: rgba(99,102,241,0.4);
+      transform: translateX(4px);
+    }
+
+    .pc-member strong { color: #fff; font-weight: 600; }
+    .pc-member span { color: var(--text-muted); font-size: 13px; }
+
+    /* Footer */
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .footer a {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 30px; }
+      .hero .subtitle { font-size: 16px; }
+      .hero-meta { flex-direction: column; gap: 12px; align-items: center; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 12px; }
+      .organizers-grid { grid-template-columns: 1fr; }
+      .date-item { grid-template-columns: 1fr; gap: 4px; }
+      .section-title { font-size: 28px; }
+      .section { padding: 60px 24px; }
+    }
+
+    /* Scroll animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
+<body>
 
-<body id="home">
-
-<!-- Preloader -->
-<div id="preloader">
-  <div id="status"></div>
-</div>
-
-<!-- FullScreen -->
-<div class="intro-header">
-  <div class="col-xs-12 text-center abcen1">
-    <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s" style="font-size: 1.7em; margin-top: 0; margin-bottom: 5px;">The 2nd International Workshop on<br />Foundation Models for<br />Bioinformatics and Biomedicine (FMBB 2025)</h1>
-
-    <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s" style="font-size: 1em; margin-top: 5px;">December 15-18, 2025</h3>
-  </div>
-  <!-- /.container -->
-  <div class="col-xs-12 text-center abcen wow fadeIn">
-    <div class="button_down" style="margin-top: 0;"> <a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#about"> <img class="img_scroll" src="img/icon/circle.png" alt="Go down to content"> </a> </div>
-  </div>
-</div>
-
-<!-- NavBar-->
-<nav class="navbar-default" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand" href="https://biod.whu.edu.cn/bibm2025/Workshops.htm" target="_blank">BIBM 2025 Workshop</a> </div>
-    <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
-      <ul class="nav navbar-nav">
-        <li class="menuItem"><a href="#about">About</a></li>
-        <li class="menuItem"><a href="#topics">Research Topics</a></li>
-        <li class="menuItem"><a href="#schedule">Important Dates</a></li>
-        <li class="menuItem"><a href="#organizers">Organizers</a></li>
-      </ul>
-    </div>
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="https://www3.cs.stonybrook.edu/~bibm2026/" target="_blank" class="nav-brand">
+      <i class="fa fa-flask" style="margin-right:6px;"></i> BIBM 2026 Workshop
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#dates">Dates</a></li>
+      <li><a href="#organizers">Organizers</a></li>
+    </ul>
   </div>
 </nav>
 
-<!-- About -->
-<div id="about" class="content-section-a" style="border-top: 0">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 wow fadeInLeftBig" data-animation-delay="200">
-        <h2 class="section-heading">About the FMBB 2025</h2>
-        <p class="lead">Foundation models like large language models and vision-language models have been pivotal in the transformation of artificial intelligence. Trained on vast datasets, these models exhibit extraordinary abilities in understanding and generating natural language and analyzing visual content. Their success across general domains has fueled exploration into specialized applications within bioinformatics and biomedicine—fields deeply entrenched in complex data.</p>
-        <p class="lead">Bioinformatics and biomedicine leverage computational power to decipher intricate biological and medical data. Integrating foundation models into these areas promises substantial advancements in research and healthcare outcomes. Applications range from biomedical image analysis and drug discovery to protein design and personalized medicine, exploiting the abundance of data to foster novel discoveries and enhance decision-making processes.</p>
-        <p class="lead">This workshop is dedicated to unveiling the potential of foundation models within bioinformatics and biomedicine. We aim to bring together a diverse group of researchers and industry experts to foster collaboration, share cutting-edge solutions, and discuss both the opportunities and challenges of applying foundation models in critical biomedical sectors.</p>
-        <p class="lead">Following the success of our first workshop in 2024, we are excited to present the 2nd International Workshop on Foundation Models for Bioinformatics and Biomedicine. You can visit <a href="https://fmbb2024.github.io" target="_blank" class="previous-workshop"><i class="fa fa-external-link"></i>the FMBB 2024 website</a> to view the previous proceedings and presentations. The workshop will be conducted in a fully virtual format via Zoom to facilitate seamless interaction, presentations, and discussions among participants worldwide.</p>
-        <p class="lead">The workshop is held in conjunction with IEEE International Conference on Bioinformatics and Biomedicine 2025 (BIBM, CCF rank B). Accepted papers will be included in the corresponding proceedings.</p>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      In conjunction with IEEE International Conference on Bioinformatics and Biomedicine 2026
+    </div>
+    <h1>The 3rd International Workshop on<br>Foundation Models for<br>Bioinformatics and Biomedicine</h1>
+    <p class="subtitle">FMBB 2026</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <i class="fa fa-calendar"></i>
+        <span>December 1–4, 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <i class="fa fa-map-marker"></i>
+        <span>Dallas, TX, USA · Hybrid</span>
+      </div>
+      <div class="hero-meta-item">
+        <i class="fa fa-university"></i>
+        <span>IEEE BIBM 2026</span>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div id="topics" class="content-section-b">
+<!-- About -->
+<section id="about" class="section">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 wow fadeInLeftBig" data-animation-delay="200">
-        <h2 class="section-heading">Topics of Interest</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <ul>
-              <li>Foundation models for medical image analysis</li>
-              <li>Foundation models for drug discovery</li>
-              <li>Foundation models for the structure, function and dynamics of biomolecules (e.g., protein, DNA, RNA)</li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <ul>
-              <li>Benchmarks and evaluations of foundation models for biomedicine</li>
-              <li>Case studies and real-world applications of foundation models in bioinformatics and biomedicine</li>
-              <li>Ethical considerations, privacy, and security aspects of foundation models in biomedicine</li>
-            </ul>
-          </div>
+    <div class="fade-up">
+      <span class="section-label">Overview</span>
+      <h2 class="section-title">About the Workshop</h2>
+    </div>
+    <div class="card about-text fade-up">
+      <p>Foundation models like large language models and vision-language models have been pivotal in the transformation of artificial intelligence. Trained on vast datasets, these models exhibit extraordinary abilities in understanding and generating natural language and analyzing visual content. Their success across general domains has fueled exploration into specialized applications within bioinformatics and biomedicine — fields deeply entrenched in complex data.</p>
+      <p>Bioinformatics and biomedicine leverage computational power to decipher intricate biological and medical data. Integrating foundation models into these areas promises substantial advancements in research and healthcare outcomes. Applications range from biomedical image analysis and drug discovery to protein design and personalized medicine, exploiting the abundance of data to foster novel discoveries and enhance decision-making processes.</p>
+      <p>This workshop is dedicated to unveiling the potential of foundation models within bioinformatics and biomedicine. We aim to bring together a diverse group of researchers and industry experts to foster collaboration, share cutting-edge solutions, and discuss both the opportunities and challenges of applying foundation models in critical biomedical sectors.</p>
+      <p>Following the success of our previous workshops — with 20+ submissions and 10+ accepted papers each year — we are excited to present the 3rd edition. Visit <a href="https://fmbb2025.github.io" target="_blank"><i class="fa fa-external-link" style="font-size:12px;margin-right:4px;"></i>FMBB 2025</a> and <a href="https://fmbb2024.github.io" target="_blank"><i class="fa fa-external-link" style="font-size:12px;margin-right:4px;"></i>FMBB 2024</a> for previous proceedings. The workshop will be conducted in a <strong style="color:#fff;">hybrid</strong> format with Zoom for virtual participation.</p>
+      <p>Accepted papers will be included in the IEEE International Conference on Bioinformatics and Biomedicine (BIBM) 2026 proceedings published by the IEEE Computer Society Press.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Topics -->
+<section id="topics" class="section section-alt">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-label">Call for Papers</span>
+      <h2 class="section-title">Research Topics</h2>
+      <p class="section-desc">We welcome original research contributions on the following topics, including but not limited to:</p>
+    </div>
+    <div class="topics-grid fade-up">
+      <div class="card topic-card">
+        <div class="topic-icon"><i class="fa fa-heartbeat"></i></div>
+        <h4>Foundation models for medical image analysis</h4>
+      </div>
+      <div class="card topic-card">
+        <div class="topic-icon"><i class="fa fa-flask"></i></div>
+        <h4>Foundation models for drug discovery</h4>
+      </div>
+      <div class="card topic-card">
+        <div class="topic-icon"><i class="fa fa-dna"></i></div>
+        <h4>Foundation models for the structure, function and dynamics of biomolecules (e.g., protein, DNA, RNA)</h4>
+      </div>
+      <div class="card topic-card">
+        <div class="topic-icon"><i class="fa fa-bar-chart"></i></div>
+        <h4>Benchmarks and evaluations of foundation models for biomedicine</h4>
+      </div>
+      <div class="card topic-card">
+        <div class="topic-icon"><i class="fa fa-stethoscope"></i></div>
+        <h4>Case studies and real-world applications of foundation models in bioinformatics and biomedicine</h4>
+      </div>
+      <div class="card topic-card">
+        <div class="topic-icon"><i class="fa fa-shield"></i></div>
+        <h4>Ethical considerations, privacy, and security aspects of foundation models in biomedicine</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Important Dates -->
+<section id="dates" class="section">
+  <div class="container">
+    <div class="fade-up">
+      <span class="section-label">Timeline</span>
+      <h2 class="section-title">Important Dates</h2>
+    </div>
+    <div class="card fade-up">
+      <div class="dates-list">
+        <div class="date-item">
+          <span class="date-value">Jun 1, 2026</span>
+          <span class="date-label">Workshop website open and call for papers announcement</span>
+        </div>
+        <div class="date-item">
+          <span class="date-value">Aug 1, 2026</span>
+          <span class="date-label">Submission system opens</span>
+        </div>
+        <div class="date-item">
+          <span class="date-value">Oct 15, 2026</span>
+          <span class="date-label">Due date for full workshop papers submission</span>
+        </div>
+        <div class="date-item">
+          <span class="date-value">Nov 1, 2026</span>
+          <span class="date-label">Notification of paper acceptance to authors</span>
+        </div>
+        <div class="date-item">
+          <span class="date-value">Nov 8, 2026</span>
+          <span class="date-label">Camera-ready deadline for accepted papers</span>
+        </div>
+        <div class="date-item">
+          <span class="date-value">Dec 1–4, 2026</span>
+          <span class="date-label">Workshop dates — In-person (Dallas, TX) &amp; Online (Zoom)</span>
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Schedule -->
-<div id="schedule" class="content-section-a">
-  <div class="container">
-    <h2 class="section-heading">Important Dates</h2>
-      
-    <table id="timeTable">
-      <tr>
-        <th style="width:35%;">Date</th>
-        <th style="width:auto;">Event</th>
-      </tr>
-
-      <tr>
-        <td>June 1, 2025</td>
-        <td>Workshop website open and call for papers announcement</td>
-      </tr>
-
-      <tr>
-        <td>August 1, 2025</td>
-        <td>Submission system opens</td>
-      </tr>
-
-      <tr>
-        <td>October 15, 2025</td>
-        <td>Due date for full workshop papers submission</td>
-      </tr>
-
-      <tr>
-        <td>November 10, 2025</td>
-        <td>Notification of paper acceptance to authors</td>
-      </tr>
-
-      <tr>
-        <td>November 23, 2025</td>
-        <td>Camera-ready deadline for accepted papers</td>
-      </tr>
-
-      <tr>
-        <td>December 15-18, 2025</td>
-        <td>Workshop dates (Online via Zoom - connection details will be provided)</td>
-      </tr>
-    </table>
-
-    <div class="text-center">
-      <a href="https://wi-lab.com/cyberchair/2025/bibm25/index.php" target="_blank" class="submission-link">
-        <i class="fa fa-paper-plane"></i> Paper Submission System
+    <div class="text-center" style="text-align:center;">
+      <a href="https://wi-lab.com/cyberchair/2026/bibm26/scripts/ws_submit.php?subarea=S" target="_blank" class="cta-btn">
+        <i class="fa fa-paper-plane"></i> Submit Your Paper
       </a>
     </div>
 
-    <div class="schedule" style="margin-top: 40px;">
-      <h2>Workshop Schedule</h2>
-      <p>The detailed presentation schedule will be announced after the paper acceptance notifications. The program will include paper presentations, invited talks, and interactive discussions focused on the application of foundation models in bioinformatics and biomedicine.</p>
-    </div>
-      
-  </div>
-</div>
-
-<div id="organizers" class="content-section-b" style="border-top: 0">
-  <div class="container">
-    <h2 class="section-heading">Organizers</h2>
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="organizer-card wow fadeInUp" data-animation-delay="200">
-          <h4 class="text-center"><a href="https://yiqingshen.com" target="_blank" style="text-decoration: none; color: #3a5199;">Yiqing Shen</a></h4>
-          <center>
-            <img class="img-responsive img-circle" height="145px" width="145px" src="img/organizer/yiqing-nobg.png" alt="Yiqing Shen">
-            <h5 class="text-center">Johns Hopkins University</h5>
-            <p class="text-center" style="margin-top: 10px;"><a href="mailto:yiqingshen1@gmail.com">yiqingshen1@gmail.com</a></p>
-          </center>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="organizer-card wow fadeInUp" data-animation-delay="300">
-          <h4 class="text-center"><a href="https://yuguangwang.github.io" target="_blank" style="text-decoration: none; color: #3a5199;">Yu Guang Wang</a></h4>
-          <center>
-            <img class="img-responsive img-circle" height="150px" width="150px" src="img/organizer/yuguang-2.png" alt="Yu Guang Wang">
-            <h5 class="text-center">Shanghai Jiao Tong University</h5>
-            <p class="text-center" style="margin-top: 10px;"><a href="mailto:yuguang.wang@sjtu.edu.cn">yuguang.wang@sjtu.edu.cn</a></p>
-          </center>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="section-heading" style="margin-top: 60px;">Program Committee</h2>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="organizer-card">
-          <ul>
-            <li><strong>Kai Yi</strong> (University of New South Wales, Australia)</li>
-            <li><strong>Zan Chen</strong> (Toursun Synbio, China)</li>
-            <li><strong>Yungeng Liu</strong> (Toursun Synbio, China)</li>
-          </ul>
-        </div>
-      </div>
+    <div class="card fade-up" style="margin-top:48px;">
+      <h3 style="font-size:18px;font-weight:600;color:#fff;margin-bottom:12px;"><i class="fa fa-calendar-check-o" style="margin-right:8px;color:var(--accent);"></i>Workshop Schedule</h3>
+      <p style="color:var(--text-muted);font-size:15px;">The detailed presentation schedule will be announced after the paper acceptance notifications. The program will include paper presentations, invited talks, and interactive discussions focused on the application of foundation models in bioinformatics and biomedicine.</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Sponsorship -->
-<div id="sponsors" class="content-section-a">
+<!-- Organizers -->
+<section id="organizers" class="section section-alt">
   <div class="container">
-    <h2 class="section-heading">Sponsors</h2>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="sponsor-section">
-          <div class="sponsor-logos">
-            <div class="col-md-6 col-sm-6 text-center">
-              <div class="sponsor-logo">
-                <img src="img/sponsor/zm.png" alt="Sponsor Logo" class="img-responsive" style="max-height: 120px; margin: 20px auto; display: block;">
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6 text-center">
-              <div class="sponsor-logo">
-                <img src="img/sponsor/ts.png" alt="Sponsor Logo" class="img-responsive" style="max-height: 120px; margin: 20px auto; display: block;">
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>
-        </div>
+    <div class="fade-up">
+      <span class="section-label">Team</span>
+      <h2 class="section-title">Program Co-Chairs</h2>
+    </div>
+    <div class="organizers-grid fade-up">
+      <div class="card organizer-card">
+        <img class="organizer-img" src="img/organizer/yuguang-2.png" alt="Yu Guang Wang">
+        <h4><a href="https://yuguangwang.github.io" target="_blank">Yu Guang Wang</a></h4>
+        <p class="affiliation">Shanghai Jiao Tong University</p>
+        <p class="email"><a href="mailto:yuguang.wang@sjtu.edu.cn">yuguang.wang@sjtu.edu.cn</a></p>
+      </div>
+      <div class="card organizer-card">
+        <img class="organizer-img" src="img/organizer/yiqing-nobg.png" alt="Yiqing Shen">
+        <h4><a href="https://yiqingshen.com" target="_blank">Yiqing Shen</a></h4>
+        <p class="affiliation">Johns Hopkins University</p>
+        <p class="email"><a href="mailto:yiqingshen1@gmail.com">yiqingshen1@gmail.com</a></p>
       </div>
     </div>
+
   </div>
-</div>
+</section>
 
-<footer>
+<!-- Footer -->
+<footer class="footer">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center" id="contact">
-        <h5>© The 2nd International Workshop on Foundation Models for Bioinformatics and Biomedicine (FMBB 2025)</h5>
-      </div>
-    </div>
+    <p>© 2026 The 3rd International Workshop on Foundation Models for Bioinformatics and Biomedicine (FMBB 2026)</p>
+    <p style="margin-top:8px;font-size:13px;">
+      In conjunction with <a href="https://www3.cs.stonybrook.edu/~bibm2026/" target="_blank">IEEE BIBM 2026</a> · Dallas, TX, USA
+    </p>
   </div>
 </footer>
 
-<!-- JavaScript -->
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/script.js"></script>
-<!-- StikyMenu -->
-<script src="js/stickUp.min.js"></script>
-<script type="text/javascript">
-  jQuery(function($) {
-    $(document).ready( function() {
-      $('.navbar-default').stickUp();
-    });
-  });
-</script>
-<!-- Smoothscroll -->
-<script type="text/javascript" src="js/jquery.corner.js"></script>
-<script src="js/wow.min.js"></script>
 <script>
- new WOW().init();
+// Scroll animation observer
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    observer.observe(el);
+  });
+});
 </script>
-<script src="js/classie.js"></script>
-<!-- Magnific Popup core JS file -->
-<script src="js/jquery.magnific-popup.js"></script>
 </body>
 </html>
