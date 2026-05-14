@@ -245,6 +245,37 @@
       text-decoration: none;
     }
 
+    /* Sponsors */
+    .sponsors-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .sponsor-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .sponsor-item:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .sponsor-item img {
+      max-height: 80px;
+      max-width: 240px;
+      object-fit: contain;
+    }
+
     /* Footer */
     .footer {
       padding: 32px 24px;
@@ -278,6 +309,7 @@
       <li><a href="#topics">Topics</a></li>
       <li><a href="#dates">Dates</a></li>
       <li><a href="#organizers">Organizers</a></li>
+      <li><a href="#sponsors">Sponsors</a></li>
     </ul>
   </div>
 </nav>
@@ -356,6 +388,20 @@
         <h4><a href="https://yiqingshen.com" target="_blank">Yiqing Shen</a></h4>
         <p class="affiliation">Johns Hopkins University</p>
         <p class="email"><a href="mailto:yiqingshen1@gmail.com">yiqingshen1@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sponsors" class="section">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;">Sponsorship</h2>
+    <div class="sponsors-grid">
+      <div class="sponsor-item">
+        <img src="img/sponsor/ts.png" alt="Toursun Synbio">
+      </div>
+      <div class="sponsor-item">
+        <img src="img/sponsor/zm.jpg" alt="追梦AI">
       </div>
     </div>
   </div>
